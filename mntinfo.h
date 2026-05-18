@@ -7,18 +7,38 @@
 #ifndef	__MNTINFO_H_
 #define	__MNTINFO_H_
 
-#ifdef	USEMNTENTH
+#ifdef DARWIN
+/* Эмуляция структуры mntent для macOS */
+struct mntent {
+    char *mnt_fsname;
+    char *mnt_dir;
+    char *mnt_type;
+    char *mnt_opts;
+    int mnt_freq;
+    int mnt_passno;
+};
+#define Xmnt_opts mnt_opts
+typedef struct mntent mnt_t;
+
+/* Заглушки функций для macOS */
+#define setmntent(f, m) ((void*)0)
+#define getmntent(f)    ((void*)0)
+#define endmntent(f)    ((void*)0)
+#else
+#ifdef USEMNTENTH
 #include <mntent.h>
 #endif
-#ifdef	USEMNTTABH
+#ifdef USEMNTTABH
 #include <sys/mnttab.h>
 #endif
-#ifdef	USEMNTCTL
+#ifdef USEMNTCTL
 #include <fshelp.h>
 #include <sys/vfs.h>
 #include <sys/mntctl.h>
 #include <sys/vmount.h>
 #endif
+#endif
+
 
 #define	ETCMTAB			"/etc/mtab"
 #define	PROCMOUNTS		"/proc/mounts"
