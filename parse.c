@@ -4,6 +4,43 @@
  *	command line parser
  */
 
+#ifndef FD_PARSE_FIX
+#define FD_PARSE_FIX
+#include <stddef.h>
+
+/* Эмуляция флагов препроцессора printf для parse.c */
+enum printf_flags {
+    VF_MINUS = 0x01,
+    VF_ZERO = 0x02,
+    VF_THOUSAND = 0x04,
+    VF_PLUS = 0x08,
+    VF_SPACE = 0x10,
+    VF_STRICTWIDTH = 0x20,
+    VF_PRINTABLE = 0x40,
+    VF_SIZEUNIT = 0x80,
+    VF_NEW = 0x0100,
+    VF_FILE = 0x0200,
+    VF_UNSIGNED = 0x0400,
+    VF_ASPOSSIBLE = 0x0800,
+    VF_KANJI = 0x1000,
+    VF_ARGUMENT = 0x2000
+};
+
+static const char printfflagchar[] = "-0'+ #pui";
+static const int printfflag[] = {
+    VF_MINUS, VF_ZERO, VF_THOUSAND, VF_PLUS, VF_SPACE,
+    VF_STRICTWIDTH, VF_PRINTABLE, VF_UNSIGNED, VF_SIZEUNIT
+};
+
+static const char printfsizechar[] = "hlv";
+static const int printfsize[] = { 1, 2, 3 };
+#define MAXCHARWID 4 /* ДОБАВЬТЕ ЭТУ СТРОКУ СЮДА */
+
+#endif
+
+
+
+
 #ifdef	FD
 #include "fd.h"
 #include "pathname.h"

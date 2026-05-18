@@ -11,6 +11,7 @@
 #include "kconv.h"
 #include "func.h"
 #include "kanji.h"
+extern int printf_defkanji;
 
 #ifdef	DEP_ORIGSHELL
 #include "system.h"

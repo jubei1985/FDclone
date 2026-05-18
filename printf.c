@@ -4,6 +4,40 @@
  *	formatted printing module
  */
 
+#ifndef FD_PRINTF_FIX
+#define FD_PRINTF_FIX
+typedef struct _printbuf_t {
+    int ptr;
+    char *buf;
+    int size;
+    int flags;
+} printbuf_t;
+
+enum printf_flags {
+    VF_MINUS = 0x01,
+    VF_ZERO = 0x02,
+    VF_THOUSAND = 0x04,
+    VF_PLUS = 0x08,
+    VF_SPACE = 0x10,
+    VF_STRICTWIDTH = 0x20,
+    VF_PRINTABLE = 0x40,
+    VF_SIZEUNIT = 0x80,
+    VF_NEW = 0x0100,
+    VF_FILE = 0x0200,
+    VF_UNSIGNED = 0x0400,
+    VF_ASPOSSIBLE = 0x0800,
+    VF_KANJI = 0x1000,
+    VF_ARGUMENT = 0x2000
+};
+
+#define MAXCHARWID 4
+#define XFILE void
+
+#include <stdio.h>
+#define Xstdout __stdoutp
+#endif
+
+
 #include "headers.h"
 #include "depend.h"
 #include "printf.h"

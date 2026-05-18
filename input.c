@@ -4,6 +4,12 @@
  *	input module
  */
 
+#ifndef FD_INPUT_FIX
+#define FD_INPUT_FIX
+#define MAXCHARWID 4
+#endif
+
+
 #include "fd.h"
 #include "wait.h"
 #include "parse.h"

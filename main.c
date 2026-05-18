@@ -373,6 +373,7 @@ static VOID NEAR signalexit(sig)
 int sig;
 {
 	signal2(sig, SIG_IGN);
+	int printf_urgent = 0;
 
 	if (isorgpid()) {
 		printf_urgent++;

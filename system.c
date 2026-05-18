@@ -22,6 +22,10 @@
 #include "dirent.h"
 #include "sysemu.h"
 
+
+extern int printf_defkanji;
+extern int printf_urgent;
+
 #if	!defined (FD) && !defined (MINIMUMSHELL)
 #include "time.h"
 #endif
@@ -11164,6 +11168,8 @@ int pseudoexit;
 			cont = 0;
 			ERRBREAK;
 		}
+
+
 
 #ifdef	DEP_FILECONV
 		renewkanjiconv(&buf, DEFCODE, defaultkcode, L_FNAME);
