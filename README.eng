@@ -1,3 +1,11 @@
+Для компиляции под современный Mac OS (Dwarwin) следует выполнить:
+
+make config
+export CFLAGS="-std=gnu89 -Wno-error=implicit-function-declaration -Wno-deprecated-non-prototype -Wno-typedef-redefinition -Wno-attributes -Wno-empty-body -DFD_PRINTF"
+export HOSTCFLAGS="$CFLAGS"
+make clean
+make
+
 ############################################################
 #
 #	About FDclone Ver. 3.01
